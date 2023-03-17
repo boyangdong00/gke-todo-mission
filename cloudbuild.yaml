@@ -9,7 +9,7 @@ steps:
         ".",
       ]
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld"],
+    args: ["push", "${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld"]
   - name: 'gcr.io/cloud-builders/gke-deploy'
     args:
     - run
