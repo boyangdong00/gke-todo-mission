@@ -16,6 +16,6 @@ steps:
     - --filename=kubernetes.yaml
     - --image=${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld:latest
     - --location=us-central1-c
-    - --cluster=mycluster
+    - --cluster=${_CLUSTER_NAME}
 images:
   - "${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld:latest"

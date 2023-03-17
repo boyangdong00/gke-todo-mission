@@ -14,6 +14,7 @@ resource "google_cloudbuild_trigger" "deploy_trigger" {
         _REGISTRY_URL   = "${var.region}-docker.pkg.dev"
         _REGION         = var.region
         _PROJECT_NAME   = var.project_id
+        _CLUSTER_NAME   = google_container_cluster.primary.name
     }
 
     filename = "cloudbuild.yaml"
