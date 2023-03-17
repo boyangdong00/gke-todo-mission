@@ -1,0 +1,6 @@
+# ignore all .terraform dependencies 
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
