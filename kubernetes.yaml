@@ -17,5 +17,5 @@ spec:
     spec:
       containers:
       - name: "helloworld"
-        image: ""
+        image: "us-central1-docker.pkg.dev/k8-playground-artiq/todos/helloworld:latest"
         imagePullPolicy: Always
