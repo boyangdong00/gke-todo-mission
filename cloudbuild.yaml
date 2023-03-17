@@ -5,10 +5,17 @@ steps:
       [
         "build",
         "-t",
-        "${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld:$SHORT_SHA",
-        "-t",
         "${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld:latest",
         ".",
       ]
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld"]
+    args: ["push", "${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld"],
+  - name: 'gcr.io/cloud-builders/gke-deploy'
+    args:
+    - run
+    - --filename=kubernetes.yaml
+    - --image= ${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld
+    - --location=us-central1-c
+    - --cluster=mycluster
+images:
+  - "${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld"
