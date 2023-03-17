@@ -25,5 +25,5 @@ variable "github_owner" {
 }
 
 variable "github_branch" {
-    default = "^master$"
+    default = "^main$"
 }
