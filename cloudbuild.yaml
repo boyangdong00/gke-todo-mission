@@ -14,8 +14,8 @@ steps:
     args:
     - run
     - --filename=kubernetes.yaml
-    - --image= gcr.io/$PROJECT_ID/${_REGISTRY}/helloworld:latest
+    - --image= ${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld
     - --location=us-central1-c
     - --cluster=mycluster
 images:
-  - "gcr.io/$PROJECT_ID/${_REGISTRY}/helloworld:latest"
+  - "${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld"
