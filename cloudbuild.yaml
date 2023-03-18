@@ -5,6 +5,8 @@ steps:
       [
         "build",
         "-t",
+        "${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld:${SHORT_SHA}",
+        "-t",
         "${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld:latest",
         ".",
       ]
@@ -15,7 +17,6 @@ steps:
     - run
     - --filename=kubernetes.yaml
     - --image=${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld:latest
-    - --location=us-central1
+    - --location=us-central1-c
     - --cluster=${_CLUSTER_NAME}
-images:
-  - "${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld:latest"
+
