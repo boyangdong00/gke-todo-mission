@@ -17,6 +17,6 @@ steps:
     - run
     - --filename=kubernetes.yaml
     - --image=${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld:latest
-    - --location=us-central1-c
+    - --location=us-central1
     - --cluster=${_CLUSTER_NAME}
 
