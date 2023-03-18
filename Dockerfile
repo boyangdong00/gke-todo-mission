@@ -10,4 +10,6 @@ RUN npm install
 # Add app source code
 ADD /src /usr/src/app
 
+EXPOSE 8080
+
 ENTRYPOINT npm run start
