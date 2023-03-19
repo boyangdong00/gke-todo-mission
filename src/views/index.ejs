@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>The doers</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+  <div class="app-name">
+    <h1>The doers</h1>
+  </div>
+  <div class="todo-container">
+    <h1>Add your goals today</h1>
+    <div class="todo">
+      <h4>Add a task</h4>
+      <div class="input-todo"></div>
+      <form method="post" action="/add">
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" required />
+        <input type="submit" value="Add" />
+      </form>
+      <ul class="todo-list">
+        <% tasks.forEach((task)=> { %>
+          <li class="todo-list-item">
+            <%= task.description %>
+              <% if (task.completed) { %>
+                (Completed)
+                <% } else { %>
+                  <form method="post" action="/complete">
+                    <input type="hidden" name="taskId" value="<%= task.id %>" />
+                    <input type="submit" value="Complete" />
+                  </form>
+                  <% } %>
+                    <form method="post" action="/delete" class="remove">
+                      <input type="hidden" name="taskId" value="<%= task.id %>" />
+                      <input type="submit" value="Delete" />
+                    </form>
+          </li>
+          <% }) %>
+      </ul>
+    </div>
+  </div>
+
+</body>
+
+</html>
