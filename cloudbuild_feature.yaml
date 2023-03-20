@@ -15,7 +15,7 @@ steps:
   - name: 'gcr.io/cloud-builders/gke-deploy'
     args:
     - run
-    - --filename=kubernetes.yaml
+    - --filename=kubernetes_feature.yaml
     - --image=${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/thedoers:latest
     - --location=us-central1
     - --cluster=${_CLUSTER_NAME}
