@@ -27,3 +27,7 @@ variable "github_owner" {
 variable "github_branch" {
     default = "^main$"
 }
+
+variable "branch_feature"{
+  default = "^new-feature$"
+}
