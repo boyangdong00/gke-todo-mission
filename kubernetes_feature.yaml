@@ -3,6 +3,8 @@ kind: "Deployment"
 metadata:
   name: "thedoers"
   namespace: "default"
+  labels:
+    app: "thedoers"
 spec:
   replicas: 1
   selector:
