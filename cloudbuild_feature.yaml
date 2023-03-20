@@ -7,7 +7,7 @@ steps:
         "-t",
         "${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld:${SHORT_SHA}",
         "-t",
-        "${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld:stable",
+        "${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld:latest",
         ".",
       ]
   - name: "gcr.io/cloud-builders/docker"
@@ -16,7 +16,7 @@ steps:
     args:
     - run
     - --filename=kubernetes.yaml
-    - --image=${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld:stable
+    - --image=${_REGISTRY_URL}/$PROJECT_ID/${_REGISTRY}/helloworld:latest
     - --location=us-central1
     - --cluster=${_CLUSTER_NAME}
 
