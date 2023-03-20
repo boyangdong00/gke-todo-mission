@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: "helloworld"
-        image: "us-central1-docker.pkg.dev/k8-playground-artiq/todos/helloworld:latest"
+        image: "us-central1-docker.pkg.dev/k8-playground-artiq/todos/helloworld:stable"
         imagePullPolicy: Always
       imagePullSecrets:
         - name: artifact-registry
