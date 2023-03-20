@@ -6,7 +6,7 @@ metadata:
   labels:
     app: "thedoers"
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: "thedoers"
@@ -32,6 +32,48 @@ metadata:
 spec:
   selector:
     app: thedoers
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer
+
+---
+
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "thedoers-canary"
+  namespace: "default"
+  labels:
+    app: "thedoers-canary"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "thedoers-canary"
+  template:
+    metadata:
+      labels:
+        app: "thedoers-canary"
+    spec:
+      containers:
+      - name: "thedoers-canary"
+        image: "us-central1-docker.pkg.dev/k8-playground-artiq/todos/thedoers:latest"
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8080
+      imagePullSecrets:
+        - name: artifact-registry
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: thedoers-canary
+spec:
+  selector:
+    app: thedoers-canary
   ports:
   - name: http
     port: 80
