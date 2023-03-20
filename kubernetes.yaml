@@ -10,17 +10,24 @@ spec:
   selector:
     matchLabels:
       app: "thedoers"
+      release: "stable"
   template:
     metadata:
       labels:
         app: "thedoers"
+        release: "stable"
     spec:
       containers:
       - name: "thedoers"
         image: "us-central1-docker.pkg.dev/k8-playground-artiq/todos/thedoers:stable"
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 8080
+          env:
+          - name: RELEASE
+            valueFrom:
+              filedRef:
+                fieldPath: metadata.labels['release']
       imagePullSecrets:
         - name: artifact-registry
 

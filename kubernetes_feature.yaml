@@ -28,10 +28,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: thedoers-canary
+  name: thedoers
 spec:
   selector:
-    app: thedoers-canary
+    app: thedoers
   ports:
   - name: http
     port: 80
