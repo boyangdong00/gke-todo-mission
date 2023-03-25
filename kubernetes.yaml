@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: "thedoers"
-        image: "us-central1-docker.pkg.dev/k8-playground-artiq/thedoers/thedoers:stable"
+        image: "us-central1-docker.pkg.dev/k8-playground-artiq-381720/thedoers/thedoers:stable"
         resources:
           limits:
             memory: "128Mi"
