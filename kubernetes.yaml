@@ -19,7 +19,11 @@ spec:
     spec:
       containers:
       - name: "thedoers"
-        image: "us-central1-docker.pkg.dev/k8-playground-artiq-381720/thedoers/thedoers:stable"
+        image: "us-central1-docker.pkg.dev/k8-playground-artiq/thedoers/thedoers:stable"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
         imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 8080
@@ -39,3 +43,62 @@ spec:
     port: 80
     targetPort: 8080
   type: LoadBalancer
+
+---
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: thedoers-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: thedoers
+  minReplicas: 1
+  maxReplicas: 20
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+
+# ---
+
+# apiVersion: networking.istio.io/v1beta1
+# kind: DestinationRule
+# metadata: 
+#   name: thedoers-canary
+# spec:
+#   host: <cluster-name>
+#   subsets:
+#   - name: stable
+#     labels:
+#       release: stable
+#   - name: canary
+#     labels:
+#       release: latest
+
+
+# ---
+
+# apiVersion: networking.istio.io/v1beta1
+# kind: VirtualService
+# metadata: 
+#   name: thedoers
+# spec:
+#   host: <cluster-name>
+#   http:
+#   - route:
+#     - destination:
+#         host: <cluster-name>
+#         subset: stable
+#       weight: 90
+#     - destination:
+#         host: <cluster-name>
+#         subset: canary
+#       weight: 10
+    
+

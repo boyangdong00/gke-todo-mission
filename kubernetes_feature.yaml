@@ -19,24 +19,14 @@ spec:
     spec:
       containers:
       - name: "thedoers"
-        image: "us-central1-docker.pkg.dev/k8-playground-artiq-381720/thedoers/thedoers:latest"
-        imagePullPolicy: Always
+        image: "us-central1-docker.pkg.dev/k8-playground-artiq/thedoers/thedoers:latest"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 8080
       imagePullSecrets:
         - name: artifact-registry
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: thedoers
-spec:
-  selector:
-    app: thedoers
-  ports:
-  - name: http
-    port: 80
-    targetPort: 8080
-  type: LoadBalancer
 
