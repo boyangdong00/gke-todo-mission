@@ -1,3 +1,3 @@
-project_id = "k8-playground-artiq"
+project_id = "k8-playground-artiq-381720"
 region     = "us-central1"
-service    = "todos"
+service    = "thedoers"
