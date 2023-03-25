@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: "thedoers"
-        image: "us-central1-docker.pkg.dev/k8-playground-artiq/todos/thedoers:latest"
+        image: "us-central1-docker.pkg.dev/k8-playground-artiq/thedoers/thedoers:latest"
         imagePullPolicy: Always
         ports:
           - containerPort: 8080
