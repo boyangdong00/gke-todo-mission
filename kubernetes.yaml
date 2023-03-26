@@ -50,6 +50,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: thedoers-hpa
+  namespace: "default"
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
@@ -71,6 +72,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata: 
   name: thedoers
+  namespace: "default"
 spec:
   host: thedoers
   subsets:
@@ -88,6 +90,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata: 
   name: thedoers
+  namespace: "default"
 spec:
   host: thedoers
   http:
