@@ -70,7 +70,7 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata: 
-  name: thedoers-canary
+  name: thedoers
 spec:
   host: thedoers
   subsets:
