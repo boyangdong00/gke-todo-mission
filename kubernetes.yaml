@@ -66,42 +66,40 @@ spec:
         type: Utilization
         averageUtilization: 50
 
----
+# ---
 
-apiVersion: networking.istio.io/v1alpha3
-kind: DestinationRule
-metadata: 
-  name: thedoers
-  namespace: "default"
-spec:
-  host: thedoers
-  subsets:
-  - name: stable
-    labels:
-      release: stable
-  - name: canary
-    labels:
-      release: latest
+# apiVersion: networking.istio.io/v1alpha3
+# kind: DestinationRule
+# metadata: 
+#   name: thedoers
+# spec:
+#   host: thedoers
+#   subsets:
+#   - name: stable
+#     labels:
+#       release: stable
+#   - name: canary
+#     labels:
+#       release: latest
 
 
----
+# ---
 
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata: 
-  name: thedoers
-  namespace: "default"
-spec:
-  host: thedoers
-  http:
-  - route:
-    - destination:
-        host: thedoers
-        subset: stable
-      weight: 90
-    - destination:
-        host: thedoers
-        subset: canary
-      weight: 10
+# apiVersion: networking.istio.io/v1alpha3
+# kind: VirtualService
+# metadata: 
+#   name: thedoers
+# spec:
+#   host: thedoers
+#   http:
+#   - route:
+#     - destination:
+#         host: thedoers
+#         subset: stable
+#       weight: 90
+#     - destination:
+#         host: thedoers
+#         subset: canary
+#       weight: 10
     
 
