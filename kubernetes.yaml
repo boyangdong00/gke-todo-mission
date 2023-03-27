@@ -90,7 +90,8 @@ kind: VirtualService
 metadata: 
   name: thedoers
 spec:
-  host: thedoers
+  hosts: 
+  - thedoers.com
   http:
   - route:
     - destination:
