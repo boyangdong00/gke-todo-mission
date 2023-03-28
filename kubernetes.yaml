@@ -22,7 +22,7 @@ spec:
         image: "us-central1-docker.pkg.dev/k8-playground-artiq-381720/thedoers/thedoers:stable"
         resources:
           limits:
-            memory: "128Mi"
+            memory: "64Mi"
             cpu: "500m"
         imagePullPolicy: IfNotPresent
         ports:
