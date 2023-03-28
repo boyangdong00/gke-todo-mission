@@ -20,10 +20,6 @@ spec:
       containers:
       - name: "thedoers"
         image: "us-central1-docker.pkg.dev/k8-playground-artiq-381720/thedoers/thedoers:latest"
-        resources:
-          limits:
-            memory: "64Mi"
-            cpu: "500m"
         imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 8080
